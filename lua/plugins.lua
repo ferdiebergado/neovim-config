@@ -10,7 +10,15 @@ return require("packer").startup({
 			"nathom/filetype.nvim",
 		})
 
-		-- SYNTAX HIGHLIGHT --
+		-- ICONS --
+		use({
+			"nvim-tree/nvim-web-devicons",
+			config = function()
+				require("nvim-web-devicons").setup({})
+			end,
+		})
+
+		-- SYNTAX --
 		use({
 			"nvim-treesitter/nvim-treesitter",
 			run = function()
@@ -19,6 +27,12 @@ return require("packer").startup({
 			end,
 			config = function()
 				require("config.treesitter")
+			end,
+		})
+		use({
+			"nvim-treesitter/nvim-treesitter-context",
+			config = function()
+				require("treesitter-context").setup({})
 			end,
 		})
 
@@ -45,6 +59,20 @@ return require("packer").startup({
 			"ray-x/lsp_signature.nvim",
 			config = function()
 				require("config.lsp_signature")
+			end,
+		})
+		use({
+			"glepnir/lspsaga.nvim",
+			branch = "main",
+			config = function()
+				require("config.lspsaga")
+			end,
+		})
+		use({
+			"folke/trouble.nvim",
+			requires = "kyazdani42/nvim-web-devicons",
+			config = function()
+				require("config.trouble")
 			end,
 		})
 
@@ -108,7 +136,7 @@ return require("packer").startup({
 			end,
 		})
 
-		-- EDITING
+		-- EDITING SUPPORT --
 		use({
 			"numToStr/Comment.nvim",
 			config = function()
@@ -123,6 +151,13 @@ return require("packer").startup({
 			end,
 		})
 
+		use({
+			"lukas-reineke/indent-blankline.nvim",
+			config = function()
+				require("indent_blankline").setup({})
+			end,
+		})
+
 		-- FILE EXPLORER --
 		use({
 			"nvim-neo-tree/neo-tree.nvim",
@@ -132,6 +167,18 @@ return require("packer").startup({
 				"kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
 				"MunifTanjim/nui.nvim",
 			},
+			config = function()
+				require("config.neotree")
+			end,
+		})
+
+		-- TERMINAL --
+		use({
+			"akinsho/toggleterm.nvim",
+			tag = "*",
+			config = function()
+				require("config.toggleterm")
+			end,
 		})
 
 		-- KEYBINDINGS --
@@ -153,12 +200,43 @@ return require("packer").startup({
 				require("gitsigns").setup()
 			end,
 		})
+		use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
+		use("mfussenegger/nvim-dap")
 
 		-- COLORSCHEME --
 		use({
 			"folke/tokyonight.nvim",
 			config = function()
 				require("config.tokyonight")
+				vim.cmd("colorscheme tokyonight-moon")
+			end,
+		})
+		-- use({
+		-- 	"tanvirtin/monokai.nvim",
+		-- 	config = function()
+		-- 		require("monokai").setup({})
+		-- 	end,
+		-- })
+
+		-- use({
+		-- 	"ofirgall/ofirkai.nvim",
+		-- 	config = function()
+		-- 		require("ofirkai").setup({})
+		-- 	end,
+		-- })
+
+		use({
+			"Yazeed1s/minimal.nvim",
+			config = function()
+				--vim.cmd([[colorscheme minimal]])
+			end,
+		})
+
+		use({
+			"adisen99/codeschool.nvim",
+			requires = { "rktjmp/lush.nvim" },
+			config = function()
+				-- require("config.codeschool")
 			end,
 		})
 	end,

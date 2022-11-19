@@ -1,4 +1,4 @@
--- CREDITS: https://github.com/Abstract-IDE/Abstract/blob/main/lua/configs.lua
+-- SOURCE: https://github.com/Abstract-IDE/Abstract/blob/main/lua/configs.lua
 
 local opt = vim.opt
 local api = vim.api
@@ -33,7 +33,7 @@ opt.undodir = backup_dir .. "/undos" -- where to put undo files
 opt.viewdir = backup_dir .. "/view" -- where to store files for :mkview
 opt.shada = "'100,<50,f50,n" .. backup_dir .. "/shada/shada"
 
-opt.clipboard = vim.opt.clipboard + "unnamedplus" -- copy & paste
+opt.clipboard = opt.clipboard + "unnamedplus" -- copy & paste
 opt.wrap = false -- don't automatically wrap on load
 opt.showmatch = true -- show the matching part of the pair for [] {} and ()
 
@@ -73,12 +73,12 @@ opt.inccommand = "split" -- live preview of :s results
 opt.shell = "zsh" -- shell to use for `!`, `:!`, `system()` etc.
 opt.lazyredraw = true -- faster scrolling
 
-opt.wildignore = vim.opt.wildignore + "*.o,*.rej,*.so" -- patterns to ignore during file-navigation
+opt.wildignore = opt.wildignore + "*.o,*.rej,*.so" -- patterns to ignore during file-navigation
 opt.completeopt = "menuone,noselect,noinsert" -- completion options
 
 -- configs
-if vim.api.nvim_call_function("has", { "nvim-0.8" }) == 1 then
-	vim.opt.cmdheight = 0 -- command height
+if api.nvim_call_function("has", { "nvim-0.8" }) == 1 then
+	opt.cmdheight = 0 -- command height
 end
 
-vim.cmd("colorscheme tokyonight")
+-- vim.cmd("colorscheme tokyonight")

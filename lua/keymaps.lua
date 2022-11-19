@@ -1,4 +1,4 @@
--- CREDITS: https://github.com/Abstract-IDE/Abstract/blob/main/lua/configs.lua
+-- SOURCE: https://github.com/Abstract-IDE/Abstract/blob/main/lua/configs.lua
 
 vim.g.mapleader = " "
 
