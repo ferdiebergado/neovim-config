@@ -6,9 +6,7 @@ return require("packer").startup({
 		-- STARTUP TIME --
 		use("lewis6991/impatient.nvim")
 
-		use({
-			"nathom/filetype.nvim",
-		})
+		use("nathom/filetype.nvim")
 
 		-- ICONS --
 		use({
@@ -29,12 +27,12 @@ return require("packer").startup({
 				require("config.treesitter")
 			end,
 		})
-		use({
-			"nvim-treesitter/nvim-treesitter-context",
-			config = function()
-				require("treesitter-context").setup({})
-			end,
-		})
+		-- use({
+		-- 	"nvim-treesitter/nvim-treesitter-context",
+		-- 	config = function()
+		-- 		require("treesitter-context").setup({})
+		-- 	end,
+		-- })
 
 		-- LSP --
 		use({
@@ -55,26 +53,26 @@ return require("packer").startup({
 				require("config.lspconfig")
 			end,
 		})
-		use({
-			"ray-x/lsp_signature.nvim",
-			config = function()
-				require("config.lsp_signature")
-			end,
-		})
-		use({
-			"glepnir/lspsaga.nvim",
-			branch = "main",
-			config = function()
-				require("config.lspsaga")
-			end,
-		})
-		use({
-			"folke/trouble.nvim",
-			requires = "kyazdani42/nvim-web-devicons",
-			config = function()
-				require("config.trouble")
-			end,
-		})
+		-- use({
+		-- 	"ray-x/lsp_signature.nvim",
+		-- 	config = function()
+		-- 		require("config.lsp_signature")
+		-- 	end,
+		-- })
+		-- use({
+		-- 	"glepnir/lspsaga.nvim",
+		-- 	branch = "main",
+		-- 	config = function()
+		-- 		require("config.lspsaga")
+		-- 	end,
+		-- })
+		-- use({
+		-- 	"folke/trouble.nvim",
+		-- 	requires = "kyazdani42/nvim-web-devicons",
+		-- 	config = function()
+		-- 		require("config.trouble")
+		-- 	end,
+		-- })
 
 		-- COMPLETION --
 		use("hrsh7th/cmp-nvim-lsp") -- LSP source for nvim-cmp
@@ -173,11 +171,18 @@ return require("packer").startup({
 		})
 
 		-- TERMINAL --
+		-- use({
+		-- 	"akinsho/toggleterm.nvim",
+		-- 	tag = "*",
+		-- 	config = function()
+		-- 		require("config.toggleterm")
+		-- 	end,
+		-- })
+
 		use({
-			"akinsho/toggleterm.nvim",
-			tag = "*",
+			"numToStr/FTerm.nvim",
 			config = function()
-				require("config.toggleterm")
+				require("config.fterm")
 			end,
 		})
 
@@ -201,7 +206,12 @@ return require("packer").startup({
 			end,
 		})
 		use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
+
+		-- DEBUGGING --
 		use("mfussenegger/nvim-dap")
+
+		-- UI --
+		use({ "stevearc/dressing.nvim" })
 
 		-- COLORSCHEME --
 		use({
@@ -209,34 +219,6 @@ return require("packer").startup({
 			config = function()
 				require("config.tokyonight")
 				vim.cmd("colorscheme tokyonight-moon")
-			end,
-		})
-		-- use({
-		-- 	"tanvirtin/monokai.nvim",
-		-- 	config = function()
-		-- 		require("monokai").setup({})
-		-- 	end,
-		-- })
-
-		-- use({
-		-- 	"ofirgall/ofirkai.nvim",
-		-- 	config = function()
-		-- 		require("ofirkai").setup({})
-		-- 	end,
-		-- })
-
-		use({
-			"Yazeed1s/minimal.nvim",
-			config = function()
-				--vim.cmd([[colorscheme minimal]])
-			end,
-		})
-
-		use({
-			"adisen99/codeschool.nvim",
-			requires = { "rktjmp/lush.nvim" },
-			config = function()
-				-- require("config.codeschool")
 			end,
 		})
 	end,
